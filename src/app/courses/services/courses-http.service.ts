@@ -5,7 +5,6 @@ import { Course } from '../model/course';
 import { map } from 'rxjs/operators';
 import { Lesson } from '../model/lesson';
 
-
 @Injectable()
 export class CoursesHttpService {
     constructor(private http: HttpClient) { }
