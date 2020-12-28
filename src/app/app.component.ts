@@ -3,6 +3,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AppState } from './reducers';
+import { AuthActions } from './auth/actions';
 import { AuthSelectors } from './auth/selectors';
 
 @Component({
@@ -51,5 +52,6 @@ export class AppComponent implements OnInit {
     }
 
     logout() {
+        this.store.dispatch(AuthActions.logout());
     }
 }
