@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { metaReducers, reducers } from './reducers';
+import * as fromGuards from './auth/guards';
 // import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 // import { EffectsModule } from '@ngrx/effects';
 // import { EntityDataModule } from '@ngrx/data';
@@ -22,7 +23,8 @@ import { metaReducers, reducers } from './reducers';
 const routes: Routes = [
     {
         path: 'courses',
-        loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+        loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule),
+        canActivate: [fromGuards.AuthGuard]
     },
     {
         path: '**',
