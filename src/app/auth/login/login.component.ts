@@ -6,7 +6,7 @@ import { noop } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
 import { AppState } from '../../reducers';
-import { login } from '../actions/auth.action';
+import { AuthActions } from '../actions';
 
 @Component({
     selector: 'login',
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.auth.login(val.email, val.password)
             .pipe(
                 tap(user => {
-                    const newLoginAction = login({ user });
+                    const newLoginAction = AuthActions.login({ user });
                     this.store.dispatch(newLoginAction);
 
                     this.router.navigateByUrl('/courses');
