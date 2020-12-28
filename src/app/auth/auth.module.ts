@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
 // import { EffectsModule } from '@ngrx/effects';
