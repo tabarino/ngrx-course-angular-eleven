@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from './reducers';
 import { AuthActions } from './auth/actions';
 import { AuthSelectors } from './auth/selectors';
+import { login } from './auth/actions/auth.action';
 
 @Component({
     selector: 'app-root',
@@ -22,6 +23,12 @@ export class AppComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        const userProfile = localStorage.getItem('user');
+
+        if (userProfile) {
+            this.store.dispatch(login({ user: JSON.parse(userProfile) }));
+        }
+
         this.router.events.subscribe(event => {
             switch (true) {
                 case event instanceof NavigationStart: {
