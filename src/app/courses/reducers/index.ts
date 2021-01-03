@@ -23,6 +23,9 @@ export const coursesReducer = createReducer(
             action.courses,
             { ...state, allCoursesLoaded: true }
         );
+    }),
+    on(CourseActions.courseUpdated, (state, action) => {
+        return adapter.updateOne(action.update, state);
     })
 );
 
